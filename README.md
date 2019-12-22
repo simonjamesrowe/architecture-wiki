@@ -1,3 +1,3 @@
 Welcome to the deployment wiki!
 
-* [Setting up minikube](docs/minikube-setup)
+* [Setting up minikube](docs/minikube-setup.md)
