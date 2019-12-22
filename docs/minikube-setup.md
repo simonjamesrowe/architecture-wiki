@@ -10,3 +10,8 @@ brew install docker-machine-driver-hyperkit
  ```
  minikube start --cpus=4 --disk-size=50g --vm-driver=hyperkit --memory=24000 --nfs-share=/Users/**/**/kube
  ```
+
+ ### Enable Nginx ingress controller
+ ```
+ minikube addons enable ingress
+ ```
