@@ -15,3 +15,12 @@ brew install docker-machine-driver-hyperkit
  ```
  minikube addons enable ingress
  ```
+
+ ### Install Helm
+ ```
+brew install kubernetes-helm
+ ```
+
+ ```
+
+ ```
