@@ -3,23 +3,12 @@ kind: PersistentVolume
 metadata:
   name: pv-keycloak-psql
 spec:
-  storageClassName: default
+  storageClassName: keycloak-postgress
   accessModes:
     - ReadWriteOnce
   capacity:
-    storage: 15Gi
+    storage: 8Gi
   hostPath:
     path: /data/keycloak-psql
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pvc-keycloak-psql
-spec:
-  volumeName: pv-keycloak-psql
-  storageClassName: default
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 15Gi
+

@@ -1,0 +1,25 @@
+persistence:
+  enabled: true
+  storageClass: standard
+  size: 10Gi
+serviceAccount:
+  master:
+    name: jenkins
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+  hosts:
+    - build.simonjamesrowe.com
+  paths:
+    - "/"
+referenceContent:
+  - data:
+      - fileName: plugins.txt
+        fileContent: |
+          configuration-as-code
+          configuration-as-code-support
+          workflow-aggregator
+          kubernetes
+          kubernetes-credentials-provider
+          job-dsl

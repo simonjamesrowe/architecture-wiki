@@ -17,4 +17,5 @@ keycloak:
 postgresql:
   persistence:
     enabled: true
-    existingClaim: pvc-keycloak-psql
+    storageClass: keycloak-postgress
+    size: 8Gi
