@@ -13,17 +13,17 @@ brew install docker-machine-driver-hyperkit
 minikube start --cpus=4 --disk-size=250g --vm-driver=hyperkit --memory=24000  -p simonjamesrowe --kubernetes-version=1.17.0
 ```
 
-### Creating Load Balancer Service for Ingress Controller
-
-```
-kubectl apply -f kube/ingress-svc.yml
-```
 
 ### Enable Nginx ingress controller
 
 ```
 minikube addons enable ingress -p simonjamesrowe
-minkkube tunnel -p simonjamesrowe
+```
+
+### Enable port forwarding
+```
+export POD_NAME=$(kubectl get pods --namespace kube-system -l "app.kubernetes.io/name=nginx-ingress-controller" -o jsonpath="{.items[0].metadata.name}")
+kubectl port-forward --address=0.0.0.0 $POD_NAME 8443:443 8080:80 -n kube-system > /dev/null &
 ```
 
 ### Install Helm
