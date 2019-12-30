@@ -24,3 +24,9 @@ kubectl exec --namespace default "$POD_NAME" cat /var/jenkins_home/secrets/initi
 ```
 sudo echo "$(minikube ip -p simonjamesrowe) build.simonjamesrowe.com" >> /etc/hosts
 ```
+
+### Upgrading Helm Chart
+
+```
+helm install jenkins -f charts/jenkins-values.yml codecentric/jenkins
+```

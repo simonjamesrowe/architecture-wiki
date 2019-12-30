@@ -1,0 +1,37 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Issuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    # You must replace this email address with your own.
+    # Let's Encrypt will use this to contact you about expiring
+    # certificates, and issues related to your account.
+    email: simon.rowe@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      # Secret resource used to store the account's private key.
+      name: issuer-account-key
+    # Add a single challenge solver, HTTP01 using nginx
+    solvers:
+      - selector: {}
+        dns01:
+          route53:
+            hostedZoneID: ZKF198WQXTUV4
+            region: eu-east-1
+            accessKeyID: AKIAWJT6BF5QYSVEU35T
+            secretAccessKeySecretRef:
+              name: aws
+              key: secretAccessKey
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: wildcard-cert
+spec:
+  secretName: wildcard-cert
+  commonName: "*.simonjamesrowe.com"
+  dnsNames:
+    - "*.simonjamesrowe.com"
+  issuerRef:
+    name: letsencrypt-prod

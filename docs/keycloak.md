@@ -23,3 +23,9 @@ helm install keycloak -f charts/keycloak-values.yml codecentric/keycloak
 ```
 sudo echo "$(minikube ip -p simonjamesrowe) auth.simonjamesrowe.com" >> /etc/hosts
 ```
+
+### Updating chart
+
+```
+helm install keycloak -f charts/keycloak-values.yml codecentric/keycloak
+```

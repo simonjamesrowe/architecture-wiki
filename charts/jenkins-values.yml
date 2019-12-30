@@ -13,6 +13,10 @@ ingress:
     - build.simonjamesrowe.com
   paths:
     - "/"
+  tls:
+    - hosts:
+        - build.simonjamesrowe.com
+      secretName: wildcard-cert
 referenceContent:
   - data:
       - fileName: plugins.txt

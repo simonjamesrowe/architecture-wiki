@@ -8,6 +8,10 @@ keycloak:
       kubernetes.io/ingress.class: "nginx"
     hosts:
       - auth.simonjamesrowe.com
+    tls:
+      - hosts:
+          - auth.simonjamesrowe.com
+        secretName: wildcard-cert
   persistence:
     deployPostgres: true
     dbVendor: postgres
