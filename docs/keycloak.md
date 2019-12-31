@@ -18,12 +18,6 @@ kubectl apply -f kube/keycloak-psql-pv.yml
 helm install keycloak -f charts/keycloak-values.yml codecentric/keycloak
 ```
 
-### Add entry to hosts file
-
-```
-sudo echo "$(minikube ip -p simonjamesrowe) auth.simonjamesrowe.com" >> /etc/hosts
-```
-
 ### Updating chart
 
 ```
