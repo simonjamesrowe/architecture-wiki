@@ -32,3 +32,13 @@ kubectl port-forward --address=0.0.0.0 $POD_NAME 8443:443 8080:80 -n kube-system
 brew install kubernetes-helm
 helm repo add codecentric https://codecentric.github.io/helm-charts
 ```
+
+
+
+### Create Image Registry Secret 
+Use the below to create an image registry secret. We will need this to pull images from github package registry.
+
+```
+kubectl create secret docker-registry regcred --docker-server=docker.pkg.github.com --docker-username=simonrowe --docker-password=******* --docker-email=simon.rowe@gmail.com
+```
+
