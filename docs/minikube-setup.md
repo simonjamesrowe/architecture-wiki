@@ -20,11 +20,12 @@ minikube start --cpus=4 --disk-size=250g --vm-driver=hyperkit --memory=24000  -p
 minikube addons enable ingress -p simonjamesrowe
 ```
 
-### Enable port forwarding
+### Enable Nginx proxy server
 ```
-export POD_NAME=$(kubectl get pods --namespace kube-system -l "app.kubernetes.io/name=nginx-ingress-controller" -o jsonpath="{.items[0].metadata.name}")
-kubectl port-forward --address=0.0.0.0 $POD_NAME 8443:443 8080:80 -n kube-system > /dev/null &
+cd reverse-proxy
+docker compose up -d
 ```
+
 
 ### Install Helm
 
