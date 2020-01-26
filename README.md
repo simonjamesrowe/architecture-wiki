@@ -4,3 +4,4 @@ Welcome to the deployment wiki!
 - [Setting up certificates with cert-maneger](docs/letsencrypt.md)
 - [Setting up keycloak](docs/keycloak.md)
 - [Setting up jenkins](docs/jenkins.md)
+- [Setting up mongo](docs/mongo.md)
