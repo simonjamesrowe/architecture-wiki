@@ -35,3 +35,15 @@ spec:
     - "*.simonjamesrowe.com"
   issuerRef:
     name: letsencrypt-prod
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: website-cert
+spec:
+  secretName: website-cert
+  commonName: "simonjamesrowe.com"
+  dnsNames:
+    - "simonjamesrowe.com"
+  issuerRef:
+    name: letsencrypt-prod
