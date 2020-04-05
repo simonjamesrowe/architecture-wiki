@@ -12,7 +12,7 @@ kubectl apply -f kube/mongo-pv.yml
 
 ```
 helm upgrade --install mongo -f charts/mongo-values.yml --set mongodbRootPassword=********** stable/mongodb
-```
+```         
 
 
 ### Set up port forwarding

@@ -1,0 +1,20 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo:4.2
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: r00t
+    ports:
+      - "27017:27017"
+  kafka:
+     image: lensesio/box
+     ports: 
+      - "9092:9092"
+      - "3030:3030"
+     environment:
+       EULA: "https://dl.lenses.io/d/?id=bf3193bb-9834-4ddb-a7e3-9c7c0cb82129"
+       ADV_HOST: localhost
+       DISABLE: "azure-documentdb,blockchain,bloomberg,cassandra,coap,druid,elastic,elastic5,ftp,hazelcast,hbase,influxdb,jms,kudu,mongodb,mqtt,redis,rethink,voltdb,yahoo,hdfs,jdbc,elasticsearch,s3,twitter"
+       CONNECT_HEAP: 512m
+       SAMPLEDATA: 0
