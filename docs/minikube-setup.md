@@ -10,7 +10,7 @@ brew install docker-machine-driver-hyperkit
 ### Starting Minikube
 
 ```
-minikube start --cpus=4 --disk-size=250g --vm-driver=hyperkit --memory=24000  -p simonjamesrowe --kubernetes-version=1.17.0
+minikube start --cpus=8 --disk-size=250g --vm-driver=hyperkit --memory=24000  -p simonjamesrowe --kubernetes-version=1.18.0
 ```
 
 
@@ -23,7 +23,7 @@ minikube addons enable ingress -p simonjamesrowe
 ### Enable Nginx proxy server
 ```
 cd reverse-proxy
-docker compose up -d
+docker-compose up -d
 ```
 
 
