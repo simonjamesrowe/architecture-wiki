@@ -10,7 +10,7 @@ brew install docker-machine-driver-hyperkit
 ### Starting Minikube
 
 ```
-minikube start --cpus=8 --disk-size=250g --vm-driver=hyperkit --memory=24000  -p simonjamesrowe --kubernetes-version=1.18.0
+minikube start --cpus=8 --disk-size=250g --vm-driver=hyperkit --memory=24000  -p simonjamesrowe --kubernetes-version=1.16.0 --extra-config=apiserver.runtime-config=apps/v1beta1=true,extensions/v1beta1/deployments=true
 ```
 
 
