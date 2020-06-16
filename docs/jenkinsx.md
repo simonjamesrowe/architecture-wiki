@@ -13,3 +13,8 @@ jx boot
 ```
 
 
+### Enable certain objects to be replicated
+```
+kubectl annotate secret tls-simonjamesrowe-com-p replicator.v1.mittwald.de/replication-allowed=true 
+kubectl annotate secret tls-simonjamesrowe-com-p replicator.v1.mittwald.de/replication-allowed-namespaces=jx-staging,jx-production
+```
