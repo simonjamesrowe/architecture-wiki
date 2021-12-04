@@ -1,20 +1,26 @@
-# Jenkins X Setup
+# Jenkins X 3 Setup
 
-### Clone the Dev Environment Git repository
+Install pre-reqs (cert manager and vault)
 
-```
-git clone https://github.com/simonjamesrowe/environment-simonjamesrowe-dev.git
-```
-
-### Boot Jenkins X
-
-```
-jx boot
+```shell
+cd kube/infra
+./install.sh
 ```
 
+Once things are running there is 2 secrets that need to be created
+* aws 
+  * secretKey
+* mongodb
+  * password
 
-### Enable certain objects to be replicated
+
+Also need to make sure that vault policy is set up:
+
 ```
-kubectl annotate secret tls-simonjamesrowe-com-p replicator.v1.mittwald.de/replication-allowed=true 
-kubectl annotate secret tls-simonjamesrowe-com-p replicator.v1.mittwald.de/replication-allowed-namespaces=jx-staging,jx-production
+vault auth enable kubernetes
+vault write auth/kubernetes/role/jx-vault \
+        bound_service_account_names=kubernetes-external-secrets \
+        bound_service_account_namespaces='secret-infra' \
+        policies=allow_secrets \
+        ttl=1440h
 ```

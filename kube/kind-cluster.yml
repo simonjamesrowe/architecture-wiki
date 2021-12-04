@@ -16,7 +16,7 @@ containerdConfigPatches:
 # You probably don't need this unless you are testing Kubernetes itself.
 nodes:
 - role: control-plane
-  image: kindest/node:v1.15.11
+  image: kindest/node:v1.20.7
   kubeadmConfigPatches:
     - |
       kind: InitConfiguration
