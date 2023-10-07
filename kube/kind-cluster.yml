@@ -35,6 +35,6 @@ nodes:
     # optional: set the protocol to one of TCP, UDP, SCTP.
     # TCP is the default
     protocol: TCP
- # extraMounts:
- # - hostPath: /var/run/docker.sock
- #   containerPath: /var/run/docker.sock
+  extraMounts:
+  - hostPath: /Users/simon.rowe/k8s-volumes
+    containerPath: /etc/k8s-volumes

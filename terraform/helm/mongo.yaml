@@ -1,0 +1,13 @@
+auth:
+  existingSecret: ${existingSecret}
+  rootUser: ${username}
+port: "27017"
+image:
+  debug: true
+resources:
+  requests:
+    cpu: 1
+    memory: 1Gi
+  limits:
+    cpu: 1
+    memory: 1Gi
