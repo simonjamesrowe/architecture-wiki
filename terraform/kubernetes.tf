@@ -22,23 +22,26 @@ variable "client_key" {
 }
 
 variable "cluster_ca_certificate" {
-  type = string
+  type    = string
+  default = ""
 }
 
 provider "kubernetes" {
   host = var.host
 
-  client_certificate     = base64decode(var.client_certificate)
-  client_key             = base64decode(var.client_key)
-  cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
+  client_certificate = base64decode(var.client_certificate)
+  client_key         = base64decode(var.client_key)
+  #  cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
+  insecure           = true
 }
 
 provider "helm" {
   kubernetes {
     host = var.host
 
-    client_certificate     = base64decode(var.client_certificate)
-    client_key             = base64decode(var.client_key)
-    cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
+    client_certificate = base64decode(var.client_certificate)
+    client_key         = base64decode(var.client_key)
+    #    cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
+    insecure           = true
   }
 }

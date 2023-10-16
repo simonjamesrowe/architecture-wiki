@@ -11,7 +11,7 @@ mongodump -u xxxx -p xxxx --authenticationDatabase=admin -d cms-production -o cm
 
 If we want to restore simply run the command:
 ```
-mongorestore -u xxxx -p xxxx --authenticationDatabase=admin -d cms-staging --dir=.
+mongorestore -u "mongo-user" -p "DHwgG1ju2P+OO&uf" --authenticationDatabase=admin -d cms-staging --dir=.
 ```
 
 
