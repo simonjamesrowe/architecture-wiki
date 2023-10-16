@@ -5,5 +5,5 @@
  brew install docker
  sudo ln -sf $HOME/.colima/default/docker.sock /var/run/docker.sock
  
- colima start --cpu 8 --memory 16 --disk 200
+ colima start --cpu 8 --memory 24 --disk 250
 ```
