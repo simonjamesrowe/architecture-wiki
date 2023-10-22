@@ -1,0 +1,153 @@
+applicationName: cms
+
+containerImage:
+  repository: ghcr.io/simonjamesrowe/strapi-cms/strapi-cms
+  tag: v0.0.28
+  pullPolicy: IfNotPresent
+
+containerPorts:
+  http:
+    port: 1337
+    protocol: TCP
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 60
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+  failureThreshold: 1
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+
+shutdownDelay: 5
+replicaCount: 1
+
+deploymentStrategy:
+  enabled: true
+  type: RollingUpdate
+  rollingUpdate: { }
+
+deploymentAnnotations: { }
+
+podAnnotations: { }
+
+additionalPodLabels: { }
+
+minPodsAvailable: 1
+
+service:
+  enabled: true
+  ports:
+    app:
+      port: 80
+      targetPort: http
+      protocol: TCP
+
+serviceMonitor:
+  enabled: false
+  namespace: monitoring
+  labels: { }
+  endpoints: { }
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/app-root: /admin
+    nginx.ingress.kubernetes.io/proxy-body-size: 20m
+  path: /
+  pathType: Prefix
+  servicePort: app
+  hosts:
+    - ${domain}
+
+
+envVars:
+  DATABASE_HOST: mongo-mongodb.app-support
+  DATABASE_NAME: ${database_name}
+  DATABASE_USERNAME: ${database_username}
+
+
+additionalContainerEnv: { }
+
+configMaps: { }
+
+
+persistentVolumes:
+  uploads:
+    mountPath: /app/public/uploads
+    claimName: strapi-uploads-claim
+
+scratchPaths: { }
+
+emptyDirs: { }
+
+secrets:
+  mongo-credentials:
+    as: environment
+    items:
+      mongodb-password:
+        envVarName: DATABASE_PASSWORD
+
+containerResources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+nodeSelector: { }
+affinity: { }
+
+tolerations: [ ]
+
+imagePullSecrets: [ ]
+
+terminationGracePeriodSeconds: { }
+
+serviceAccount:
+  name: ""
+  create: false
+  annotations: { }
+  labels: { }
+
+horizontalPodAutoscaler:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+
+customResources:
+  enabled: true
+  resources:
+    pvc: |
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: strapi-uploads-claim
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 20Gi
+    mongo-credentials: |
+      apiVersion: v1
+      data: {}
+      kind: Secret
+      metadata:
+        annotations:
+          replicator.v1.mittwald.de/replicate-from: app-support/mongo-credentials
+        name: "mongo-credentials"
+      type: Opaque
+
+fullnameOverride: ""
