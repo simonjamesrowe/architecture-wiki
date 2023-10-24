@@ -1,4 +1,5 @@
 deployment.code-workspace
 /terraform/.terraform/
+/terraform/terraform.tfvars
 /terraform/.terraform.lock.hcl
 /terraform/terraform.tfstate
