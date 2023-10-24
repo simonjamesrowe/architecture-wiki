@@ -1,0 +1,7 @@
+controller:
+  replicaCount: 1
+  heapOpts: -Xmx256m -Xms256m
+
+listeners:
+  client:
+    protocol: PLAINTEXT
