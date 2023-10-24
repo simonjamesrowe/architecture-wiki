@@ -1,0 +1,17 @@
+master:
+  masterOnly: false
+  replicaCount: 1
+  heapSize: 512m
+
+global:
+  kibanaEnabled: true
+
+data:
+  replicaCount: 0
+
+coordinating:
+  replicaCount: 0
+
+ingest:
+  enabled: false
+  replicaCount: 0
